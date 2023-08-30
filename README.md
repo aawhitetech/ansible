@@ -76,6 +76,7 @@ docker exec -it ansible /bin/sh
 
 ```
 ansible all -m ping
+ansible all -m gather_facts
 ```
 Ansible will use the ansible/ansible.cfg in the ansible directory (Setting the `$ANSIBLE_CONFIG` env var to `ansible.cfg` to get around the world writable warning for demo purposes).
 ```
@@ -83,6 +84,12 @@ Ansible will use the ansible/ansible.cfg in the ansible directory (Setting the `
 https://docs.ansible.com/ansible/devel/reference_appendices/config.html#cfg-in-world-writable-dir
 ```
 
+5. Running sudo commands using ansible. For example, to apt update all hosts in the inventory file, run:
+
+```
+ansible all -m apt -a update_cache=true --become --become-ask-pass
+```
+The password is `ansible`
 
 ## Contributing
 
