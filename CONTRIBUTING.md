@@ -44,4 +44,4 @@ Before submitting your changes, ensure:
 
 ## License & Code of Conduct
 
-By contributing, you agree to the license of this project ([LICENSE](LICENSE)) and the terms of the Code of Conduct ([link to Code of Conduct here]).
+By contributing, you agree to the license of this project ([LICENSE](LICENSE)) and the terms of the Code of Conduct ([CONDUCT](CONDUCT.md)).
