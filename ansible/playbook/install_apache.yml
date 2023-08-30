@@ -21,6 +21,23 @@
       when: ansible_distribution == 'Ubuntu'
 
     - name: update repository index
+      yum:
+        update_cache: yes
+      when: ansible_distribution == 'CentOS'
+
+    - name: install httpd package
+      yum:
+        name: httpd
+        state: latest
+      when: ansible_distribution == 'CentOS'
+    
+    - name: add php support for apache
+      yum:
+        name: php
+        state: latest
+      when: ansible_distribution == 'CentOS'
+
+    - name: update repository index
       apk:
         update_cache: yes
       when: ansible_distribution == 'Alpine'

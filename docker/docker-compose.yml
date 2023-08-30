@@ -54,6 +54,16 @@ services:
     tty: true
     networks:
       - ansible
+  
+  centos1:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-centos
+    image: local/centos:ssh
+    container_name: centos1
+    tty: true
+    networks:
+      - ansible
 
 networks:
   ansible:
