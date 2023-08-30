@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  ubuntu1:
+    image: ubuntu:latest
+    container_name: ubuntu1
+    tty: true
+
+  ubuntu2:
+    image: ubuntu:latest
+    container_name: ubuntu2
+    tty: true
+
+  ubuntu3:
+    image: ubuntu:latest
+    container_name: ubuntu3
+    tty: true
