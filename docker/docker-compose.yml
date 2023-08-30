@@ -8,6 +8,8 @@ services:
     image: local/ansible:latest
     container_name: ansible
     tty: true
+    environment:
+      - ANSIBLE_CONFIG=/data/ansible/ansible.cfg
     volumes:
       - ..:/data
     networks:

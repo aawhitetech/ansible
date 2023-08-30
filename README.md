@@ -75,8 +75,14 @@ docker exec -it ansible /bin/sh
 4. Then, you can run Ansible commands. For example, to ping all hosts in the inventory file, run:
 
 ```
-ansible all --key-file ~/.ssh/id_ansible -i inventory -m ping -u ansible
+ansible all -m ping
 ```
+Ansible will use the ansible/ansible.cfg in the ansible directory (Setting the `$ANSIBLE_CONFIG` env var to `ansible.cfg` to get around the world writable warning for demo purposes).
+```
+[WARNING]: Ansible is being run in a world writable directory (/data/ansible), ignoring it as an ansible.cfg source. For more information see
+https://docs.ansible.com/ansible/devel/reference_appendices/config.html#cfg-in-world-writable-dir
+```
+
 
 ## Contributing
 
