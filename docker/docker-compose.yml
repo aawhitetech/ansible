@@ -44,6 +44,16 @@ services:
     tty: true
     networks:
       - ansible
+  
+  alpine1:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-alpine
+    image: local/alpine:ssh
+    container_name: alpine1
+    tty: true
+    networks:
+      - ansible
 
 networks:
   ansible:

@@ -1,0 +1,22 @@
+FROM alpine:latest
+
+RUN apk add --update --no-cache --no-interactive openssh sudo python3 \
+    && ln -sf python3 /usr/bin/python
+
+RUN adduser -h /home/ansible -s /bin/sh -D ansible \
+    && echo -n 'ansible:ansible' | chpasswd \
+    && addgroup sudo && addgroup sshgroup  \
+    && adduser ansible sudo && adduser ansible sshgroup \
+    && echo "%sudo ALL=(ALL:ALL) ALL" >> /etc/sudoers.d/sudo
+
+# Create sshuser directory in home
+RUN mkdir -p /home/ansible/.ssh
+# Copy the ssh public key in the authorized_keys file. The idkey.pub below is a public key file you get from ssh-keygen. They are under ~/.ssh directory by default.
+COPY id_ansible.pub /home/ansible/.ssh/authorized_keys
+# change ownership of the key file. 
+RUN chown ansible:sshgroup /home/ansible/.ssh/authorized_keys && chmod 600 /home/ansible/.ssh/authorized_keys
+
+RUN /usr/bin/ssh-keygen -A
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd","-D"]
