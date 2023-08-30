@@ -1,0 +1,12 @@
+FROM cytopia/ansible:latest
+
+RUN apk update
+
+# Create sshuser directory in home
+RUN mkdir -p /root/.ssh
+# Copy the ssh public key in the authorized_keys file. The idkey.pub below is a public key file you get from ssh-keygen. They are under ~/.ssh directory by default.
+COPY id_ansible /root/.ssh/id_ansible
+# change ownership of the key file. 
+RUN chmod 600 /root/.ssh/id_ansible
+
+CMD ["/bin/sh"]

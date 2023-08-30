@@ -2,28 +2,42 @@ version: "3.8"
 
 services:
   ansible:
-    image: cytopia/ansible:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile-ansible
+    image: local/ansible:latest
     container_name: ansible
     tty: true
+    volumes:
+      - ..:/data
     networks:
       - ansible
 
   ubuntu1:
-    image: ubuntu:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile-ubuntu
+    image: local/ubuntu:ssh
     container_name: ubuntu1
     tty: true
     networks:
       - ansible
     
   ubuntu2:
-    image: ubuntu:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile-ubuntu
+    image: local/ubuntu:ssh
     container_name: ubuntu2
     tty: true
     networks:
       - ansible
 
   ubuntu3:
-    image: ubuntu:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile-ubuntu
+    image: local/ubuntu:ssh
     container_name: ubuntu3
     tty: true
     networks:
