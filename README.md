@@ -91,12 +91,19 @@ ansible all -m apt -a update_cache=true --become --become-ask-pass
 ```
 The password is `ansible`
 
-5. Running playbooks using ansible. For example, to run the playbook install_apache on all hosts in the inventory file, run:
+6. Running playbooks using ansible. For example, to run the playbook install_apache on all hosts in the inventory file, run:
 
 ```
 ansible-playbook --ask-become-pass ansible/playbook/install_apache.yml
 ```
 The password is `ansible`
+
+7. List playbook tags using ansible, run:
+
+```
+ansible-playbook --list-tags ansible/playbook/site.yml
+ansible-playbook --tags ubuntu --ask-become-pass ansible/playbook/site.yml
+```
 
 ## Contributing
 

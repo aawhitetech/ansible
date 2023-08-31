@@ -5,26 +5,29 @@
   tasks:
 
     - name: install updates (CentOS)
+      tags: always
       dnf:
         update_only: yes
         update_cache: yes
       when: ansible_distribution == "CentOS"
     
     - name: install updates (Ubuntu)
+      tags: always
       apt:
         upgrade: dist
         update_cache: yes
       when: ansible_distribution == "Ubuntu"
 
     - name: install updates (Alpine)
+      tags: always
       apk:
         update_cache: yes
       when: ansible_distribution == "Alpine"
 
 - hosts: web_servers
+  tags: apache, apache2
   become: true
   tasks:
-
     - name: install apache and php
       package:
         name:
@@ -34,9 +37,9 @@
         update_cache: yes
 
 - hosts: db_servers
+  tags: db, mariadb 
   become: true
   tasks:
-
     - name: install mariadb
       package:
         name: "{{ mariadb_package }}"
@@ -44,9 +47,9 @@
         update_cache: yes
         
 - hosts: file_servers
+  tags: samba
   become: true
   tasks:
-
     - name: install samba package
       package:
         name: "{{ samba_package }}"
