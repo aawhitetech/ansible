@@ -1,7 +1,10 @@
+[web_servers]
 ubuntu1 apache_package=apache2 php_package=libapache2-mod-php
-ubuntu2 apache_package=apache2 php_package=libapache2-mod-php
-ubuntu3 apache_package=apache2 php_package=libapache2-mod-php
-
 alpine1 apache_package=apache2 php_package=php82-apache2
-
 centos1 apache_package=httpd php_package=php
+
+[db_servers]
+ubuntu2 mariadb_package=mariadb-server
+
+[file_servers]
+ubuntu3 samba_package=samba
