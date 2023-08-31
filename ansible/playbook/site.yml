@@ -8,6 +8,7 @@
       dnf:
         update_only: yes
         update_cache: yes
+      changed_when: false
       when: ansible_distribution == "CentOS"
     
     - name: install updates (Ubuntu)
@@ -15,12 +16,14 @@
       apt:
         upgrade: dist
         update_cache: yes
+      changed_when: false
       when: ansible_distribution == "Ubuntu"
 
     - name: install updates (Alpine)
       tags: always
       apk:
         update_cache: yes
+      changed_when: false
       when: ansible_distribution == "Alpine"
 
 - hosts: workstations
