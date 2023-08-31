@@ -8,3 +8,6 @@ ubuntu2 mariadb_package=mariadb-server
 
 [file_servers]
 ubuntu3 samba_package=samba
+
+[workstations]
+localhost ansible_connection=local
