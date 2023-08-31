@@ -2,3 +2,5 @@ apache_package: apache2
 apache_service: apache2
 php_package: php82-apache2
 www_root: /var/www/localhost/htdocs
+ssh_users: "ansible, simone"
+ssh_template_file: "sshd_config_alpine.j2"

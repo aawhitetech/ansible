@@ -2,3 +2,5 @@ apache_package: apache2
 apache_service: apache2
 php_package: libapache2-mod-php
 www_root: /var/www/html
+ssh_users: "ansible, simone"
+ssh_template_file: "sshd_config_ubuntu.j2"

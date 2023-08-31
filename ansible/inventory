@@ -1,13 +1,13 @@
 [web_servers]
-ubuntu1 apache_package=apache2 php_package=libapache2-mod-php www_root=/var/www/html
-alpine1 apache_package=apache2 php_package=php82-apache2 www_root=/var/www/localhost/htdocs
-centos1 apache_package=httpd php_package=php www_root=/var/www/html
+ubuntu1
+alpine1
+centos1
 
 [db_servers]
-ubuntu2 mariadb_package=mariadb-server
+ubuntu2
 
 [file_servers]
-ubuntu3 samba_package=samba
+ubuntu3
 
 [workstations]
-localhost ansible_connection=local
+localhost
