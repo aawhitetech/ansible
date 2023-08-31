@@ -26,61 +26,27 @@
       changed_when: false
       when: ansible_distribution == "Alpine"
 
+- hosts: all
+  become: true
+  roles:
+    - base
+
 - hosts: workstations
   become: true
-  tasks:
-    - name: install unzip package
-      tags: curl
-      package:
-        name: unzip
-        state: latest
-        update_cache: yes
-    - name: install terraform
-      tags: terraform
-      unarchive:
-        src: https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip
-        dest: /usr/local/bin
-        remote_src: yes
-        mode: 0755
-        owner: root
-        group: root
+  roles:
+    - workstations
 
 - hosts: web_servers
-  tags: apache, apache2, httpd
   become: true
-  tasks:
-    - name: install apache and php
-      package:
-        name:
-          - "{{ apache_package }}"
-          - "{{ php_package }}"
-        state: latest
-        update_cache: yes
-    - name: copy default html file for site
-      tags: apache, apache2, httpd
-      copy:
-        src: default_site.html
-        dest: "{{ www_root }}/index.html"
-        owner: root
-        group: root
-        mode: 0644
-
+  roles:
+    - web_servers
+    
 - hosts: db_servers
-  tags: db, mariadb 
   become: true
-  tasks:
-    - name: install mariadb
-      package:
-        name: "{{ mariadb_package }}"
-        state: latest
-        update_cache: yes
-        
+  roles:
+    - file_servers
+
 - hosts: file_servers
-  tags: samba
   become: true
-  tasks:
-    - name: install samba package
-      package:
-        name: "{{ samba_package }}"
-        state: latest
-        update_cache: yes
+  roles:
+    - file_servers

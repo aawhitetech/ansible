@@ -1,0 +1,5 @@
+- name: install samba package
+  package:
+    name: "{{ samba_package }}"
+    state: latest
+    update_cache: yes

@@ -1,0 +1,5 @@
+- name: add ssh key for simone
+  tags: always
+  authorized_key:
+    user: simone
+    key: "{{ lookup('file', playbook_dir ~ '/../../docker/id_ansible.pub') }}"
