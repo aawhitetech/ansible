@@ -12,3 +12,4 @@
     dest: "{{ www_root }}/index.html"
     owner: root
     group: root
+  notify: restart_apache
