@@ -1,0 +1,4 @@
+- name: install curl package
+  package:
+    name: curl
+    state: latest

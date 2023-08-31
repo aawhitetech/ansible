@@ -1,12 +1,4 @@
----
-
 - hosts: all
-  become: yes
-  tasks:
-    - name: update repository index
-      apt:
-        update_cache: yes
-    - name: install curl package
-      apt:
-        name: curl
-        state: latest
+  become: true
+  roles:
+    - curl
